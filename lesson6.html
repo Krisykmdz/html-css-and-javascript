@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+
+  <body>
+    <p>Coin flip game</p>
+
+    <button onclick="playGame('Heads')">
+      Heads
+    </button>
+
+    <button onclick="playGame('Tails')">
+      Tails
+    </button>
+
+    <script>
+      function playGame(playerMove) {
+        let randomNumber = Math.random();
+        let result = '';
+
+        if (randomNumber >= 0 && randomNumber < 0.5) {
+          result = 'Heads';
+        } else {
+          result = 'Tails';
+        }
+
+        let result2 = '';
+
+        if (playerMove === result) {
+          result2 = 'You win!';
+        } else {
+          result2 = 'You lose.';
+        }
+
+        alert(`You picked ${playerMove}. Computer picked ${result}. ${result2}`);
+      }
+    </script>
+  </body>
+</html>
