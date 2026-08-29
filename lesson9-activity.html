@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <style>
+      .text {
+        font-family: Arial;
+        font-size: 16px;
+      }
+
+      .subscribe {
+        padding: 10px 15px;
+        font-family:  Arial;
+        font-weight: 700;
+        font-size: 13px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 35px;
+
+        background-color: black;
+        color: white;
+      }
+
+      .display {
+        padding: 11px 8px;
+        width: 187px;
+      }
+
+      .calculate-button {
+        padding: 12px 15px;
+        font-size: 15px;
+        border: none;
+        color: white;
+        background-color: green;
+        cursor: pointer;
+      }
+
+      .result {
+        font-family: Arial;
+        font-size:16px;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <p class="text">YouTube Subscribe Button</p>
+
+    <button class="subscribe">Subscribe</button>
+
+    <p class="text">Amazon Shipping Calculator</p>
+    <p class="text">Orders under $40 = +$10 shipping.</p>
+    <p class="text">Orders over $40 = FREE shipping.</p>
+
+    <input class="display" placeholder="Cost of Order">
+
+    <button class="calculate-button">
+      Calculate
+    </button>
+
+    <p class="result"></p>
+
+    <script>
+      const subscribeButton = document.querySelector('.subscribe');
+
+      subscribeButton.addEventListener('click', function () {
+
+        if (subscribeButton.innerHTML === 'Subscribe') {
+
+          subscribeButton.innerHTML = 'Subscribed';
+
+          subscribeButton.style.backgroundColor = 'revert';
+          subscribeButton.style.color = 'black';
+
+        } else {
+
+          subscribeButton.innerHTML = 'Subscribe';
+
+          subscribeButton.style.backgroundColor = 'black';
+          subscribeButton.style.color = 'white';
+
+        }
+
+      });
+
+
+      const calculateButton = document.querySelector('.calculate-button');
+
+      calculateButton.addEventListener('click', function () {
+
+        let displayNumber = Number(
+          document.querySelector('.display').value
+        );
+
+        let resultParagraph;
+
+        if (displayNumber <= 40) {
+          resultParagraph = Math.round((displayNumber + 10) * 100) / 100;
+        } else {
+          resultParagraph = displayNumber;
+        }
+
+        document.querySelector('.result').innerHTML = `$${resultParagraph}`;
+
+      });
+
+
+      document.querySelector('.display').addEventListener('keydown', function (event) {
+
+        if (event.key === 'Enter') {
+          calculateButton.click();
+        }
+
+      });
+    </script>
+
+  </body>
+</html>
